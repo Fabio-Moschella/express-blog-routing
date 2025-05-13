@@ -11,7 +11,8 @@ post.get("", (req, res) => {
 // ROUT PER I DETTAGLI DEL BLOG
 post.get("/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  const post = blogPost.find((currentPost) => currentPost === id);
+  const post = blogPost.find((currentPost) => currentPost.id === id);
+  console.log(post);
   res.json({
     description: "Lettura del dettaglio dei post" + id,
     data: post,
