@@ -3,12 +3,19 @@ const blogPost = require("../data/blogPosts.js");
 const post = express.Router();
 
 post.get("", (req, res) => {
-  res.json("Lettura della lista dei post");
+  res.json({
+    description: "Lettura della lista dei post",
+    data: blogPost,
+  });
 });
 // ROUT PER I DETTAGLI DEL BLOG
 post.get("/:id", (req, res) => {
-  const id = req.params.id;
-  res.json("Lettura del dettaglio dei post" + id);
+  const id = parseInt(req.params.id);
+  const post = blogPost.find((currentPost) => currentPost === id);
+  res.json({
+    description: "Lettura del dettaglio dei post" + id,
+    data: post,
+  });
 });
 
 //ROUT PER LA CREAZIONE DEL POST
