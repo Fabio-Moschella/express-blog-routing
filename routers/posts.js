@@ -53,32 +53,32 @@ const posts = [
 const express = require("express");
 const post = express.Router();
 
-//ROOT
+//ROUT
 post.get("/", (req, res) => {
   res.send("server del mio blog");
 });
 
 post.get("/post", (req, res) => {
-  res.json(posts);
+  res.json("Lettura dei post");
 });
 // ROUT PER I DETTAGLI DEL BLOG
 post.get("/post/:id", (req, res) => {
-  res.send("Lista del post" + req.params.id);
+  res.json("Lista del post" + req.params.id);
 });
 
 //ROUT PER LA CREAZIONE DEL POST
 post.post("/post", (req, res) => {
-  res.send("Creazione del post");
+  res.json("Creazione del post");
 });
 
 //ROUT PER LA MODIFICA DEL POST
 post.put("/post/:id", (req, res) => {
-  res.send("Modifica totale del post" + req.params.id);
+  res.json("Modifica totale del post" + req.params.id);
 });
 
 //ROUT PER LA ELIMINAZIONE DEL POST
 post.delete("/post/:id", (req, res) => {
-  res.send("Eliminazione del post" + req.params.id);
+  res.json("Eliminazione del post" + req.params.id);
 });
 
 module.exports = post;
