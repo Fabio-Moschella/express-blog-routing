@@ -51,10 +51,7 @@ const posts = [
 ];
 
 const express = require("express");
-const post = express();
-const port = 3000;
-
-post.use(express.static("pubblic"));
+const post = express.Router();
 
 //ROOT
 post.get("/", (req, res) => {
@@ -64,28 +61,24 @@ post.get("/", (req, res) => {
 post.get("/post", (req, res) => {
   res.json(posts);
 });
-// ROOT PER I DETTAGLI DEL BLOG
+// ROUT PER I DETTAGLI DEL BLOG
 post.get("/post/:id", (req, res) => {
-  res.send("dettagli del post" + req.params.id);
+  res.send("Lista del post" + req.params.id);
 });
 
-//ROOT PER LA CREAZIONE DEL POST
+//ROUT PER LA CREAZIONE DEL POST
 post.post("/post", (req, res) => {
-  res.send("creazione del post");
+  res.send("Creazione del post");
 });
 
-//ROOT PER LA MODIFICA DEL POST
+//ROUT PER LA MODIFICA DEL POST
 post.put("/post/:id", (req, res) => {
-  res.send("modifica totale del post" + req.params.id);
+  res.send("Modifica totale del post" + req.params.id);
 });
 
-//ROOT PER LA ELIMINAZIONE DEL POST
+//ROUT PER LA ELIMINAZIONE DEL POST
 post.delete("/post/:id", (req, res) => {
   res.send("Eliminazione del post" + req.params.id);
 });
-// IL SERVER E IN ASCOLTO SULLA PORTA 3000
-post.listen(port, () => {
-  console.log("il server è in ascolto sulla porta" + port);
-});
 
-module.exports = { posts };
+module.exports = post;
